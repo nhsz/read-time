@@ -34,7 +34,7 @@ func countWords(text string) int {
 	I'm rounding up reading time here, based on
 	the average reading speed of an adult (~275 WPM)
 
-	src: https://help.medium.com/hc/en-us/articles/214991667-Read-time
+	Src: https://help.medium.com/hc/en-us/articles/214991667-Read-time
 */
 func estimateReadingTime(text string) readTime {
 	wordCount := countWords(text)
@@ -51,7 +51,7 @@ func estimateReadingTime(text string) readTime {
 
 /*
 	Golang doesn't have a native math.Round implementation yet :/
-	See https://github.com/golang/go/issues/4594
+	Src: https://github.com/golang/go/issues/4594
 */
 func roundUp(a float64) int {
 	return int(a + 0.5)
