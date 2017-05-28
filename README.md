@@ -4,6 +4,8 @@
 
 ## Usage 
 
+Remember this is a Go script, so you need to [install Go first!](https://golang.org/dl/)
+
 `go run readtime.go <FILE PATH>`
 
 ## Example
