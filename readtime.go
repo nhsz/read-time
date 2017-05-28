@@ -18,12 +18,14 @@ func main() {
 	check(err)
 
 	text := string(input)
-	estimatedTime := estimateReadingTime(text)
+	wordCount := countWords(text)
+	estimatedTime := estimateReadingTime(text, wordCount)
 
-	minuteOrMinutes := isMinuteOrMinutes(estimatedTime.minutes)
+	minuteOrMinutes := isItMinuteOrMinutes(estimatedTime.minutes)
 
-	fmt.Println("Total words: ", countWords(text))
-	fmt.Println("Reading time:", "this will take about", estimatedTime.minutes, minuteOrMinutes, "and", estimatedTime.seconds, "seconds to be read.")
+	fmt.Println("Total words: ", wordCount)
+	fmt.Println("Reading time:", "this will take about", estimatedTime.minutes,
+		minuteOrMinutes, "and", estimatedTime.seconds, "seconds to be read.")
 }
 
 func countWords(text string) int {
@@ -36,16 +38,17 @@ func countWords(text string) int {
 
 	Src: https://help.medium.com/hc/en-us/articles/214991667-Read-time
 */
-func estimateReadingTime(text string) readTime {
-	wordCount := countWords(text)
-
+func estimateReadingTime(text string, wordCount int) readTime {
 	rawTime := float64(wordCount) / float64(275)
 	// estimated time in minutes
 	integerPart := int(rawTime)
 	// estimated time in seconds
 	decimalPart := (rawTime - float64(integerPart)) * 60
 
-	readingTime := readTime{minutes: roundUp(float64(integerPart)), seconds: roundUp(decimalPart)}
+	readingTime := readTime{
+		minutes: roundUp(float64(integerPart)),
+		seconds: roundUp(decimalPart)}
+
 	return readingTime
 }
 
@@ -63,7 +66,7 @@ func check(e error) {
 	}
 }
 
-func isMinuteOrMinutes(timeInMinutes int) string {
+func isItMinuteOrMinutes(timeInMinutes int) string {
 	minuteOrMinutes := "minutes"
 
 	if timeInMinutes == 1 {
