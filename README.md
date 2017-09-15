@@ -1,6 +1,6 @@
 # read-time
 
-:clock1::book: Estimate reading time from text file, written in Go
+:clock1::book: Medium-like reading estimation time
 
 ## Usage 
 
